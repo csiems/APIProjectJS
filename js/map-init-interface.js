@@ -1,7 +1,9 @@
+
 $(function() {
 
   $(document).on("click", ".btn", function(e) {
     e.preventDefault();
+    $("#instructions").hide();
     var fuelType = $(this).attr("fuel-type");
     var fuelSearchUrl = 'https://data.cityofchicago.org/resource/alternative-fuel-locations.json?fuel_type_code=' + fuelType;
     $.get({
@@ -92,7 +94,8 @@ $(function() {
           var bounds = new google.maps.LatLngBounds();
           var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 41.894812, lng: -87.605089},
-            zoom: 9
+            zoom: 9,
+            disableDefaultUI: true
           });
 
           for( i = 0; i < data.length; i++ ) {
@@ -102,7 +105,13 @@ $(function() {
           function createMarker(markerArray) {
             var newPosition = createMarkerPosition(markerArray);
             var contentString = createWindowContent(markerArray);
-
+            var pinIcon = new google.maps.MarkerImage(
+              'http://icons.iconarchive.com/icons/martz90/hex/256/power-icon.png',
+              null, /* size is determined at runtime */
+              null, /* origin is 0,0 */
+              null, /* anchor is bottom center of the scaled image */
+              new google.maps.Size(42, 68)
+            );
             var newMarker = new google.maps.Marker({
               position: newPosition,
               map: map,

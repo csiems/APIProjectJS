@@ -26,9 +26,17 @@ html, body {
   box-shadow: 0 2px 0 0 #0F7534;
 }
 
+// #instructions {
+//   color: #8E5D4B;
+//   font-size: 50px;
+//   line-height: 75px;
+// }
 
 .map-wrapper {
   padding-left: 10px;
+  -moz-box-shadow: 10px 10px 5px #888;
+  -webkit-box-shadow: 10px 10px 5px #888;
+  box-shadow: 10px 10px 5px #888;
 }
 
 #map {
